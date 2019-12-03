@@ -1170,6 +1170,11 @@ public class MainActivity extends AppCompatActivity
                 String providerStr = LocationManager.GPS_PROVIDER;
                 LocationProvider provider = locationManager.getProvider(providerStr);
                 if (provider != null) {
+                    try {
+                        locationManager.removeTestProvider(providerStr);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     locationManager.addTestProvider(
                             provider.getName()
                             , provider.requiresNetwork()
